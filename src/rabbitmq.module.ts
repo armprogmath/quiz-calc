@@ -1,19 +1,12 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Module, Global } from '@nestjs/common';
 import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ExchangeType, Topics } from './common/event-constants/constants';
-import { RabbitMQGlobalModule } from './rabbitmq.module';
 
+@Global()
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      envFilePath: `.${process.env.NODE_ENV}.env`,
-      isGlobal: true,
-      expandVariables: true,
-    }),
-
+    ConfigModule,
     RabbitMQModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -27,7 +20,6 @@ import { RabbitMQGlobalModule } from './rabbitmq.module';
       }),
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  exports: [RabbitMQModule],
 })
-export class AppModule {}
+export class RabbitMQGlobalModule {}
