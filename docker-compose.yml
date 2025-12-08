@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  app:
+    build: .
+    environment:
+      PORT: 3004
+      JWT_SECRET: supersecret_jwt_key
+      JWT_EXPIRATION: 3600s
+      NODE_ENV: production
+    ports:
+      - "3004:3004"
+    command: ["node", "dist/main.js"]
+
+volumes:
+  db_data:
