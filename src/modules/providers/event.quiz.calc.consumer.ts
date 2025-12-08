@@ -1,13 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { RabbitRPC, RabbitSubscribe } from '@golevelup/nestjs-rabbitmq';
+import { AmqpConnection, RabbitRPC, RabbitSubscribe } from '@golevelup/nestjs-rabbitmq';
 import { Consumers, SendQuizCalculationRoutingKey, Topics } from '../../common/event-constants/constants';
 
 @Injectable()
 export class EventQuizCalcConsumer {
 
-  constructor() {}
+  constructor(
+    private readonly amqpConnection: AmqpConnection
 
-  @RabbitSubscribe({
+  ) {}
+
+  @RabbitRPC({
     exchange: Topics.EventQuizCalcTopic,
     routingKey: SendQuizCalculationRoutingKey.QuizCalculationSentRK,
     queue: Consumers.CommandCalculationConsumer,

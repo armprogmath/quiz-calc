@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
 import { ExchangeType, Topics } from './common/event-constants/constants';
 import { RabbitMQGlobalModule } from './rabbitmq.module';
+import {EventQuizCalcConsumer} from "./modules/providers/event.quiz.calc.consumer";
 
 @Module({
   imports: [
@@ -28,6 +29,9 @@ import { RabbitMQGlobalModule } from './rabbitmq.module';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+      AppService,
+      EventQuizCalcConsumer
+  ],
 })
 export class AppModule {}
