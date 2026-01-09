@@ -3,11 +3,9 @@ import { AppModule } from './app.module';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import * as dotenv from 'dotenv';
-//import chalk from 'chalk';
 const chalk = require('chalk');
 
 async function bootstrap() {
-  // Load the correct env file manually
   dotenv.config({ path: '.development.env' });
 
   const app = await NestFactory.create(AppModule, { cors: true });
