@@ -7,7 +7,7 @@ import * as dotenv from 'dotenv';
 const chalk = require('chalk');
 
 async function bootstrap() {
-  // Load the correct env file manually
+
   dotenv.config({ path: '.development.env' });
 
   const app = await NestFactory.create(AppModule, { cors: true });
