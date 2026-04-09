@@ -4,7 +4,6 @@ import { Consumers, SendQuizCalculationRoutingKey, Topics } from '../../common/e
 
 @Injectable()
 export class EventQuizCalcConsumer {
-  //private i = 0
   constructor(
     private readonly amqpConnection: AmqpConnection,
   ) {}
