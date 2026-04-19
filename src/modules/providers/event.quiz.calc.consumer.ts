@@ -18,7 +18,7 @@ export class EventQuizCalcConsumer {
   })
   async eventReceivedInvitation(data: any) {
     data = JSON.parse(data)
-    //console.log("The data has been received successfully", data);
+    console.log("The data has been received successfully", data);
     console.log({"message": "I did it"});
 
     // if(this.i < 5){
