@@ -21,6 +21,7 @@ export class EventQuizCalcConsumer {
      console.log("The data has been received successfully", data);
      console.log({"message": "I did it"});
 
+
     // if(this.i < 5){
     //   this.i++
     //   console.log(`attempted: ${this.i}`);
