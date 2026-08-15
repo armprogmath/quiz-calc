@@ -28,5 +28,4 @@ export class EventQuizCalcConsumer {
     // }
     return {"message": "I did it"}
   }
-
 }
